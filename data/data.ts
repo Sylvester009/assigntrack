@@ -1,0 +1,125 @@
+export const state = {
+    role: "student",
+    page: "dashboard",
+    selectedAssignment: null,
+    assignments: [
+        {
+            id: 1,
+            title: "Data Structures — Linked Lists",
+            course: "CSC 204",
+            lecturer: "Dr. Adeyemi",
+            deadline: "Sep 06, 2026",
+            status: "Submitted",
+            submitted: "Sep 02, 2026",
+            feedback:
+                "Good implementation. Your explanation of traversal is clear. Consider adding the time complexity for each operation.",
+            grade: "A",
+        },
+        {
+            id: 2,
+            title: "Database Normalization",
+            course: "CSC 208",
+            lecturer: "Mrs. Okafor",
+            deadline: "Sep 08, 2026",
+            status: "Pending",
+            submitted: "—",
+            feedback: "",
+            grade: "",
+        },
+        {
+            id: 3,
+            title: "Computer Architecture Report",
+            course: "CSC 212",
+            lecturer: "Mr. Ibrahim",
+            deadline: "Sep 10, 2026",
+            status: "Pending",
+            submitted: "—",
+            feedback: "",
+            grade: "",
+        },
+        {
+            id: 4,
+            title: "Operating Systems — Processes",
+            course: "CSC 216",
+            lecturer: "Dr. Bello",
+            deadline: "Aug 30, 2026",
+            status: "Late",
+            submitted: "Sep 01, 2026",
+            feedback:
+                "Submitted after the deadline. Please improve your discussion of process states.",
+            grade: "B",
+        },
+        {
+            id: 5,
+            title: "Web Programming Practical",
+            course: "CSC 220",
+            lecturer: "Mrs. Akin",
+            deadline: "Sep 14, 2026",
+            status: "Pending",
+            submitted: "—",
+            feedback: "",
+            grade: "",
+        },
+    ],
+
+    students: [
+        {
+            name: "Solomon Ola",
+            matric: "CSC/23/1042",
+            status: "Submitted",
+            assignment: "Data Structures — Linked Lists",
+            grade: "A",
+        },
+        {
+            name: "Daniel Ade",
+            matric: "CSC/23/1018",
+            status: "Submitted",
+            assignment: "Data Structures — Linked Lists",
+            grade: "B+",
+        },
+        {
+            name: "Mary James",
+            matric: "CSC/23/1091",
+            status: "Pending",
+            assignment: "Data Structures — Linked Lists",
+            grade: "—",
+        },
+        {
+            name: "Ibrahim Musa",
+            matric: "CSC/23/1055",
+            status: "Late",
+            assignment: "Data Structures — Linked Lists",
+            grade: "C",
+        },
+        {
+            name: "Esther Paul",
+            matric: "CSC/23/1027",
+            status: "Submitted",
+            assignment: "Data Structures — Linked Lists",
+            grade: "A-",
+        },
+    ],
+};
+
+
+export const navConfig = {
+    student: [
+        ["dashboard", "⌂", "Dashboard", "/"],
+        ["assignments", "▤", "My Assignments", "/assignments"],
+        ["submissions", "↑", "Submissions", "/submissions"],
+        ["feedback", "◌", "Feedback", "/feedback"],
+    ],
+    lecturer: [
+        ["dashboard", "⌂", "Dashboard"],
+        ["assignments", "▤", "Assignments"],
+        ["submissions", "↑", "Submissions"],
+        ["students", "♙", "Students"],
+    ],
+    admin: [
+        ["dashboard", "⌂", "Dashboard"],
+        ["users", "♙", "Users"],
+        ["courses", "▦", "Courses"],
+        ["assignments", "▤", "Assignments"],
+        ["reports", "▥", "Reports"],
+    ],
+};
