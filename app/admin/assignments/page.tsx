@@ -1,9 +1,9 @@
+import SideBar from "@/app/components/sidebar";
 import { state } from "@/data/data";
-import SideBar from "../components/sidebar";
+
 type BadgeProps = {
     status: string;
 };
-
 
 function Badge({ status }: BadgeProps) {
     const cls =
@@ -18,28 +18,7 @@ function Badge({ status }: BadgeProps) {
     return <span className={`badge ${cls}`}>{status}</span>;
 }
 
-function assignmentCard(a: { id: any; title: any; course: any; lecturer?: string; deadline: any; status: any; submitted?: string; feedback?: string; grade?: string; }) {
-    return (
-        <div className="assignment-card" key={a.id}>
-            <span className="course-tag">{a.course}</span>
-            <h3>{a.title}</h3>
-            <p>Complete the assigned academic task and upload your work before the submission deadline.</p>
-            <div className="card-meta">
-                <span>Due {a.deadline}</span>
-                {Badge(a.status)}
-            </div>
-            <div className="card-buttons">
-                <button className="small-btn alt">Details</button>
-                {a.status === "Pending" ? (
-                    <button className="small-btn"
-                    // onClick="openSubmit(${a.id})"
-                    >
-                        Submit work
-                    </button>
-                ) : ""}
-            </div>
-        </div>);
-}
+
 export default function Assignments() {
     return (
         <>
@@ -63,13 +42,38 @@ export default function Assignments() {
                     <section id="content" className="content">
                         <div className="welcome">
                             <div>
-                                <span className="top-label">Your coursework</span>
-                                <h1>My Assignments</h1>
-                                <p className="muted">View instructions, deadlines and submission status.</p>
+                                <span className="top-label">System records</span>
+                                <h1>Assignments</h1>
+                                <p className="muted">All assignments across the platform.</p>
                             </div>
                         </div>
-                        <div className="assignment-card-grid">
-                            {state.assignments.map((a) => assignmentCard(a))}
+                        <div className="panel">
+                            <div className="table-wrap">
+                                <table className="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Assignment</th>
+                                            <th>Course</th>
+                                            <th>Lecturer</th>
+                                            <th>Deadline</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {state.assignments.map((a) => (
+                                            <tr key={a.id}>
+                                                <td>
+                                                    <b>{a.title}</b>
+                                                </td>
+                                                <td>{a.course}</td>
+                                                <td>{a.lecturer}</td>
+                                                <td>{a.deadline}</td>
+                                                <td>{<Badge status={a.status} />}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </section>
                 </main>

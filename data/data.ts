@@ -102,24 +102,4 @@ export const state = {
 };
 
 
-export const navConfig = {
-    student: [
-        ["dashboard", "⌂", "Dashboard", "/"],
-        ["assignments", "▤", "My Assignments", "/assignments"],
-        ["submissions", "↑", "Submissions", "/submissions"],
-        ["feedback", "◌", "Feedback", "/feedback"],
-    ],
-    lecturer: [
-        ["dashboard", "⌂", "Dashboard"],
-        ["assignments", "▤", "Assignments"],
-        ["submissions", "↑", "Submissions"],
-        ["students", "♙", "Students"],
-    ],
-    admin: [
-        ["dashboard", "⌂", "Dashboard"],
-        ["users", "♙", "Users"],
-        ["courses", "▦", "Courses"],
-        ["assignments", "▤", "Assignments"],
-        ["reports", "▥", "Reports"],
-    ],
-};
+

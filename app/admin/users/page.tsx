@@ -1,7 +1,13 @@
-import { state } from "@/data/data";
-import SideBar from "../components/sidebar";
+import SideBar from "@/app/components/sidebar";
+
+
 type BadgeProps = {
     status: string;
+};
+
+type assignmentProps = {
+    assignment: any;
+    action: boolean;
 };
 
 
@@ -18,29 +24,39 @@ function Badge({ status }: BadgeProps) {
     return <span className={`badge ${cls}`}>{status}</span>;
 }
 
-function assignmentCard(a: { id: any; title: any; course: any; lecturer?: string; deadline: any; status: any; submitted?: string; feedback?: string; grade?: string; }) {
+function AssignmentRow({ assignment, action = false }: assignmentProps) {
     return (
-        <div className="assignment-card" key={a.id}>
-            <span className="course-tag">{a.course}</span>
-            <h3>{a.title}</h3>
-            <p>Complete the assigned academic task and upload your work before the submission deadline.</p>
-            <div className="card-meta">
-                <span>Due {a.deadline}</span>
-                {Badge(a.status)}
+        <div className="assignment-row">
+            <div className="assignment-info">
+                <strong>{assignment.title}</strong>
+
+                <span>
+                    {assignment.course} • {assignment.lecturer}
+                </span>
             </div>
-            <div className="card-buttons">
-                <button className="small-btn alt">Details</button>
-                {a.status === "Pending" ? (
-                    <button className="small-btn"
-                    // onClick="openSubmit(${a.id})"
+
+            <div className="row-right">
+                <span className="deadline">
+                    Due {assignment.deadline}
+                </span>
+
+                <Badge status={assignment.status} />
+
+                {action && assignment.status === "Pending" && (
+                    <button
+                        className="text-btn"
+                    // onClick={() => onsubmit(assignment.id)}
                     >
-                        Submit work
+                        Submit
                     </button>
-                ) : ""}
+                )}
             </div>
-        </div>);
+        </div>
+    );
 }
-export default function Assignments() {
+
+
+export default function Users() {
     return (
         <>
             <div id="toast" className="toast"></div>
@@ -53,7 +69,7 @@ export default function Assignments() {
                         <button id="mobileMenu" className="icon-btn">☰</button>
                         <div>
                             <span className="top-label">Academic workspace</span>
-                            <h2 id="pageTitle">Assignments</h2>
+                            <h2 id="pageTitle">Users</h2>
                         </div>
                         <div className="top-actions">
                             <button className="icon-btn" id="notificationBtn">♢</button>
@@ -63,13 +79,17 @@ export default function Assignments() {
                     <section id="content" className="content">
                         <div className="welcome">
                             <div>
-                                <span className="top-label">Your coursework</span>
-                                <h1>My Assignments</h1>
-                                <p className="muted">View instructions, deadlines and submission status.</p>
+                                <span className="top-label">Administration</span>
+                                <h1>Users</h1>
+                                <p className="muted">Manage registered students, lecturers and administrators.</p>
                             </div>
+                            <button className="primary-btn">+ Add new</button>
                         </div>
-                        <div className="assignment-card-grid">
-                            {state.assignments.map((a) => assignmentCard(a))}
+                        <div className="panel">
+                            <div className="empty">
+                                <h3>124 students • 18 lecturers • 2 administrators</h3>
+                                <p>Management table and CRUD operations would connect to the database in the full implementation.</p>
+                            </div>
                         </div>
                     </section>
                 </main>
