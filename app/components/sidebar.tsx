@@ -39,11 +39,6 @@ export default function SideBar() {
             <nav id="nav">
                 {lecturer ? navConfig["lecturer"].map(([id, icon, label, link]) => {
                     const isActive = pathname === link;
-                    console.log({
-                        pathname,
-                        link,
-                        isActive,
-                    });
 
                     return (
 
@@ -56,11 +51,6 @@ export default function SideBar() {
                     )
                 }) : admin ? navConfig["admin"].map(([id, icon, label, link]) => {
                     const isActive = pathname === link;
-                    console.log({
-                        pathname,
-                        link,
-                        isActive,
-                    });
 
                     return (
 
@@ -73,12 +63,6 @@ export default function SideBar() {
                     )
                 }) : navConfig["student"].map(([id, icon, label, link]) => {
                     const isActive = pathname === link;
-                    console.log({
-                        pathname,
-                        link,
-                        isActive,
-                    });
-
                     return (
 
                         <Link href={link} key={id} className={`nav-item flex gap-4 ${isActive ? "bg-[#1b3b32] text-white" : "bg-transparent text-[#9db1aa]"}`}>
@@ -95,7 +79,9 @@ export default function SideBar() {
             <div className="sidebar-bottom">
                 <div className="mini-user">
                     <div id="userAvatar" className="avatar">SO</div>
-                    <div><b id="userName">Solomon Ola</b><small id="userRole">Student</small></div>
+                    <div><b id="userName">Solomon Ola</b>
+                        <small id="userRole">{lecturer ? "Lecturer" : admin ? "Admin" : "Student"}</small>
+                    </div>
                 </div>
                 <Link href="./auth/login" id="logoutBtn" className="logout">Sign out</Link>
             </div>
