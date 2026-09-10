@@ -1,67 +1,15 @@
+import AssignmentRow from "@/app/components/assignment-row";
 import { state } from "@/data/data";
-
-
-type BadgeProps = {
-    status: string;
-};
-
-type assignmentProps = {
-    assignment: any;
-    action: boolean;
-};
-
-
-function Badge({ status }: BadgeProps) {
-    const cls =
-        status === "Submitted" || status === "Reviewed"
-            ? "success"
-            : status === "Late"
-                ? "danger"
-                : status === "Pending" || status === "Awaiting review"
-                    ? "warning"
-                    : "neutral";
-
-    return <span className={`badge ${cls}`}>{status}</span>;
-}
-
-function AssignmentRow({ assignment, action = false }: assignmentProps) {
-    return (
-        <div className="assignment-row">
-            <div className="assignment-info">
-                <strong>{assignment.title}</strong>
-
-                <span>
-                    {assignment.course} • {assignment.lecturer}
-                </span>
-            </div>
-
-            <div className="row-right">
-                <span className="deadline">
-                    Due {assignment.deadline}
-                </span>
-
-                <Badge status={assignment.status} />
-
-                {action && assignment.status === "Pending" && (
-                    <button
-                        className="text-btn"
-                    // onClick={() => onsubmit(assignment.id)}
-                    >
-                        Submit
-                    </button>
-                )}
-            </div>
-        </div>
-    );
-}
+import { getTime } from "@/utils/time";
 
 export default function Dashboard() {
+    const [greetings, _day, _month, _date, _year] = getTime();
     return (
         <>
             <div className="welcome">
                 <div>
                     <span className="top-label">Lecturer workspace</span>
-                    <h1>Good evening, Dr. Adeyemi.</h1>
+                    <h1>{greetings}, Dr. Adeyemi.</h1>
                     <p className="muted">Monitor your assignments and student submissions.</p>
                 </div>
                 <button className="primary-btn">+ Create assignment</button>

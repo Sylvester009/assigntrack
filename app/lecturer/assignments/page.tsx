@@ -1,22 +1,5 @@
-import SideBar from "@/app/components/sidebar";
+import Badge from "@/app/components/badge";
 import { state } from "@/data/data";
-
-type BadgeProps = {
-    status: string;
-};
-
-function Badge({ status }: BadgeProps) {
-    const cls =
-        status === "Submitted" || status === "Reviewed"
-            ? "success"
-            : status === "Late"
-                ? "danger"
-                : status === "Pending" || status === "Awaiting review"
-                    ? "warning"
-                    : "neutral";
-
-    return <span className={`badge ${cls}`}>{status}</span>;
-}
 
 
 export default function Assignments() {
