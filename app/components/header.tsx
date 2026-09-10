@@ -8,6 +8,7 @@ export default function Header() {
     let isAssignment = pathname.includes("assignments");
     let isSubmission = pathname.includes("submissions");
     let isFeedback = pathname.includes("feedback");
+    let isStudent = pathname.includes("students");
 
     return (
         <header className="topbar">
@@ -17,7 +18,7 @@ export default function Header() {
             <div>
                 <span className="top-label">Academic workspace</span>
                 <h2 id="pageTitle">
-                    {isAssignment ? "Assignments" : isSubmission ? "Submissions" : isFeedback ? "Feedback" : "Dashboard"}
+                    {isAssignment ? "Assignments" : isSubmission ? "Submissions" : isFeedback ? "Feedback" : isStudent ? "Students" : "Dashboard"}
                 </h2>
             </div>
             <div className="top-actions">

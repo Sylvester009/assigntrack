@@ -1,26 +1,43 @@
 "use client";
+import { ArrowUp, BarChart, Circle, Clipboard, Grid, HomeIcon, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const navConfig = {
+type IconName =
+    | "home"
+    | "clipboard"
+    | "arrowUp"
+    | "circle"
+    | "user"
+    | "grid"
+    | "barChart";
+
+type NavItem = [
+    id: string,
+    icon: IconName,
+    label: string,
+    link: string
+];
+
+const navConfig: Record<string, NavItem[]> = {
     student: [
-        ["dashboard", "⌂", "Dashboard", "/"],
-        ["assignments", "▤", "My Assignments", "/assignments"],
-        ["submissions", "↑", "Submissions", "/submissions"],
-        ["feedback", "◌", "Feedback", "/feedback"],
+        ["dashboard", "home", "Dashboard", "/"],
+        ["assignments", "clipboard", "My Assignments", "/assignments"],
+        ["submissions", "arrowUp", "Submissions", "/submissions"],
+        ["feedback", "circle", "Feedback", "/feedback"],
     ],
     lecturer: [
-        ["dashboard", "⌂", "Dashboard", "/lecturer/dashboard"],
-        ["assignments", "▤", "Assignments", "/lecturer/assignments"],
-        ["submissions", "↑", "Submissions", "/lecturer/submissions"],
-        ["students", "♙", "Students", "/lecturer/students"],
+        ["dashboard", "home", "Dashboard", "/lecturer/dashboard"],
+        ["assignments", "clipboard", "Assignments", "/lecturer/assignments"],
+        ["submissions", "arrowUp", "Submissions", "/lecturer/submissions"],
+        ["students", "user", "Students", "/lecturer/students"],
     ],
     admin: [
-        ["dashboard", "⌂", "Dashboard", "/admin/dashboard"],
-        ["users", "♙", "Users", "/admin/users"],
-        ["courses", "▦", "Courses", "/admin/courses"],
-        ["assignments", "▤", "Assignments", "/admin/assignments"],
-        ["reports", "▥", "Reports", "/admin/reports"],
+        ["dashboard", "home", "Dashboard", "/admin/dashboard"],
+        ["users", "user", "Users", "/admin/users"],
+        ["courses", "grid", "Courses", "/admin/courses"],
+        ["assignments", "clipboard", "Assignments", "/admin/assignments"],
+        ["reports", "barChart", "Reports", "/admin/reports"],
     ],
 };
 
@@ -28,6 +45,16 @@ export default function SideBar() {
     const pathname = usePathname();
     const lecturer = pathname.includes("lecturer");
     const admin = pathname.includes("admin");
+
+    const icons = {
+        home: <HomeIcon />,
+        clipboard: <Clipboard />,
+        arrowUp: <ArrowUp />,
+        circle: <Circle />,
+        user: <User />,
+        grid: <Grid />,
+        barChart: <BarChart />,
+    };
 
     return (
         <aside className="sidebar">
@@ -44,7 +71,7 @@ export default function SideBar() {
 
                         <Link href={link} key={id} className={`nav-item flex gap-4 ${isActive ? "bg-[#1b3b32] text-white" : "bg-transparent text-[#9db1aa]"}`}>
 
-                            <span className="nav-icon">{icon}</span>
+                            <span className="nav-icon flex items-center w-px h-px">{icons[icon]}</span>
                             {label}
 
                         </Link>
@@ -56,7 +83,7 @@ export default function SideBar() {
 
                         <Link href={link} key={id} className={`nav-item flex gap-4 ${isActive ? "bg-[#1b3b32] text-white" : "bg-transparent text-[#9db1aa]"}`}>
 
-                            <span className="nav-icon">{icon}</span>
+                            <span className="nav-icon flex items-center w-px h-px">{icons[icon]}</span>
                             {label}
 
                         </Link>
@@ -67,7 +94,7 @@ export default function SideBar() {
 
                         <Link href={link} key={id} className={`nav-item flex gap-4 ${isActive ? "bg-[#1b3b32] text-white" : "bg-transparent text-[#9db1aa]"}`}>
 
-                            <span className="nav-icon">{icon}</span>
+                            <span className="nav-icon flex items-center w-px h-px">{icons[icon]}</span>
                             {label}
 
                         </Link>

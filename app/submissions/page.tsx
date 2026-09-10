@@ -1,11 +1,10 @@
 import { state } from "@/data/data";
 import Badge from "../components/badge";
-import StudentLayout from "../studentLayout";
 
 
 export default function Submissions() {
     return (
-        <StudentLayout>
+        <>
             <div className="welcome">
                 <div>
                     <span className="top-label">Submission history</span>
@@ -45,6 +44,6 @@ export default function Submissions() {
                                         </tr>
 
                                     ))}</tbody></table></div></div>
-        </StudentLayout>
+        </>
     );
 }

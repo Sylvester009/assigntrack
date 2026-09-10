@@ -3,7 +3,6 @@ import AssignmentRow from "./components/assignment-row";
 import Badge from "./components/badge";
 import Link from "next/link";
 import { AlertCircle, ArrowRight, Check, Clipboard, Clock } from "lucide-react";
-import StudentLayout from "./studentLayout";
 
 
 export default function Dashboard() {
@@ -96,7 +95,7 @@ export default function Dashboard() {
 
 
   return (
-    <StudentLayout>
+    <>
       <div className="welcome">
         <div>
           <span className="top-label">{day}, {month} {date}, {year}</span>
@@ -169,6 +168,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-    </StudentLayout>
+    </>
   );
 }

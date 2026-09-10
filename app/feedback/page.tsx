@@ -1,12 +1,11 @@
 import { state } from "@/data/data";
-import StudentLayout from "../studentLayout";
 import Badge from "../components/badge";
 
 
 
 export default function Feedback() {
     return (
-        <StudentLayout>
+        <>
             <div className="welcome">
                 <div>
                     <span className="top-label">Lecturer comments</span>
@@ -29,6 +28,6 @@ export default function Feedback() {
                         </div>
                     ))
             }
-        </StudentLayout>
+        </>
     );
 }
